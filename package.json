@@ -1,0 +1,25 @@
+{
+  "name": "20-June-docker-logs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "API_Curl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.0.0",
+    "express": "^4.15.3",
+    "node-json2html": "^1.1.1",
+    "node-rest-client": "^3.1.0",
+    "placeholders": "^1.0.0",
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "mustache": "^2.3.0"
+  }
+}

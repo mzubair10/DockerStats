@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<div class="jumbotron text-center">
+        <h2>Platform Services Health - Appbuild</h2>
+</div>
+{{#ServiceDeployments}}
+<div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Summary - Services that need attention</strong></h3>
+                </div>
+                <div class="panel-body">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Service Name</strong></td>
+        							<td class="text-center"><strong>Score</strong></td>
+                                </tr>
+                            </thead>
+                    {{#bottom5Services}}
+                            <tbody>
+                                <tr>
+    								<td>{{name}}</td>
+    								<td class="text-center">{{score}}</td>
+                                </tr>
+                            </tbody>
+                    {{/bottom5Services}}
+                        </table>
+                </div>
+            </div>
+        </div>
+</div>
+<h2>Score Calculation Logic</h2>
+<div class="span6 offset3">
+    <h4>(successful deployments count * 2) + (failed deployments count * -1) + (sanity test failures count * -3)</span></h4>
+</div>
+<div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Detailed Scores</strong></h3>
+                </div>
+                 <div class="panel-body">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Service Name</strong></td>
+        							<td class="text-center"><strong>Score</strong></td>
+                                    <td class="text-center"><strong>Number of successful deployments</strong></td>
+                                    <td class="text-center"><strong>Number of failed deployments</strong></td>
+                                    <td class="text-center"><strong>Number of associated sanity failures</strong></td>
+                                </tr>
+                            </thead>
+
+                            {{#services}}
+                                <tbody>
+                                <tr>
+    								<td>{{name}}</td>
+                                    {{#score}}
+                                        <td class="text-center"><a href={{AssociatedDetails}}>{{score}}</a></td>
+                                    {{/score}}
+                                    {{^score}}
+                                        <td class="text-center"></td>
+                                    {{/score}}
+                                    <td class="text-center">{{NumberOfDeployments}}</td>
+                                    <td class="text-center">{{NumberOfRollbacks}}</td>
+                                    <td class="text-center">{{NumberOfSanityTestFailures}}</td>
+                                </tr>
+                                </tbody>
+                                {{/services}}
+                </div>
+            </div>
+        </div> 
+</div>
+{{/ServiceDeployments}}
